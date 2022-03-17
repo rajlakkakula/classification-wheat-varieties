@@ -3,13 +3,13 @@ title: 'Classification: Predicting Wheat Variety Using Kernel Geometrical Attrib
 author: "Prithviraj Lakkakula"
 date: "03/18/2022"
 output:
+  pdf_document: 
+    toc: yes
+    highlight: zenburn
   html_document: 
     highlight: zenburn
     toc: yes
     theme: readable
-  pdf_document: 
-    toc: yes
-    highlight: zenburn
 ---
 
 ```{r setup, include=FALSE}
