@@ -1,7 +1,7 @@
 ---
 title: 'Classification: Predicting Wheat Variety Using Kernel Geometrical Attributes'
 author: "Prithviraj Lakkakula"
-date: "1/18/2022"
+date: "03/18/2022"
 output:
   html_document: 
     highlight: zenburn
@@ -14,7 +14,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
+library(kernlab)
 ```
 
 ```{r, include=FALSE}
@@ -76,7 +76,7 @@ wht_data %>%
 
 On average, `Rosa` wheat variety seem to have higher length, width, area, perimeter and compactness, followed by `Kama` variety. However, `Canadian` variety has the highest average asymmetry coefficient compared with other wheat varieties.
 
-```{=html}
+
 <!--
 ### Summary Statistics
 ```{r}
@@ -84,8 +84,8 @@ On average, `Rosa` wheat variety seem to have higher length, width, area, perime
 #st(wht_data)
 ```
 -->
-```
-```{r fig.cap="Density plot of kernel length of three wheat varieties"}
+
+```{r fig.cap="Density plot of kernel length of three wheat varieties", message=FALSE}
 library(ggplot2)
 library(geomtextpath)
 
@@ -128,7 +128,7 @@ wht_data %>%
 
 ## Standardization of the features
 
-Since some of the variables are in different ranges than the others. Let us do Z-score normalization or standardization the `scale()` function in R. When applying the decision trees (random forests and gradient boosting) and KNN machine leanrning algorithms, we may need not scale.
+Since some of the variables are in different range than the others. Let us do Z-score normalization or standardization the `scale()` function in R. When applying the decision trees (random forests and gradient boosting) and KNN machine leanrning algorithms, we may need not scale.
 
 ```{r warning=FALSE}
 library(dplyr)
@@ -236,7 +236,9 @@ result_gbm <- data.frame(testing$wheat_var, classes)
 
 ```
 
-```{=html}
+## Conclusions
+The ensemble models suggest that there is an accuracy of about 95% using Random Forest and 93% using GBM in predicting the correct wheat variety using a set of features. In the UC Irvine's data repository, it was indicated that there was some critical features that they could not provide due to proprietary issues associated with those data. Therefore, given those additional features, there is a scope for improving accuracy rate. Overall, the classification results show that accuracy of predicting the correct wheat variety is high. 
+
 <!--
 ### Training Ensemble Models
 ```{r}
@@ -259,4 +261,4 @@ all_models <- caretList(wheat_var ~ .,
 summary(all_models)
 ```
 -->
-```
+
